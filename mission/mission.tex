@@ -22,24 +22,29 @@ Plusieurs fonctionnalités essentielles sont prévues pour les applications :
 
 Il est impératif que les applications soient hautement sécurisées, tout en garantissant une maintenance aisée et une extensibilité optimale.
 
-% TODO : améliorer cette section pour y ajouter toutes les contraintes liés aux applications
-Pour cela, de nouvelles contraintes liés aux développement des applications apparaissent.
-Pour l'application web, celle-ci devra être basé sur le concept de Single Web Page. 
-Pour l'API, celle-ci devra être réactive.
+Cependant, la réalisation de ces objectifs est soumise à plusieurs contraintes spécifiques liées au développement des applications.
+
+Concernant l'application web, il est impératif qu'elle soit conçue selon le concept de Single Page Application (SPA), offrant ainsi une expérience utilisateur fluide et réactive. Cette approche permettra de réduire les temps de chargement en ne rechargeant que les éléments nécessaires à l'écran, améliorant ainsi l'efficacité et la rapidité de l'application.
+
+En ce qui concerne l'API, une exigence cruciale est sa réactivité. L'API devra être en mesure de gérer simultanément de multiples requêtes et d'y répondre efficacement, tout en maintenant des temps de réponse courts. Cette réactivité est essentielle pour garantir une expérience utilisateur optimale, même en périodes de pic d'utilisation.
+
+Ces contraintes, bien que complexes, contribuent à l'élaboration d'applications performantes et conviviales, conformes aux besoins et aux attentes des utilisateurs.
+
 
 \subsubsection{Détails}
 
 \paragraph{Les comptes utilisateurs}
+~~\\
 
-Posséder un compte utilisateur est un élément clé lors de l'utilisation d'une application. Cela nous permet d'enregistrer nos préférences et stocker des informations par rapport au contenu proposer par l'application. Cependant, il faut faire attention de sécuriser correctement l'authentification pour éviter que quelqu'un d'autre utilise un compte qui n'est pas à lui.
+Posséder un compte utilisateur constitue un élément clé dans l'expérience d'utilisation d'une application. Il permet de personnaliser les préférences de l'utilisateur et de stocker des informations en lien avec le contenu proposé par l'application. Cependant, il est impératif de garantir une sécurisation rigoureuse de l'authentification afin d'éviter tout accès non autorisé à un compte.
 
-Dans le but de renforcer la sécurité de notre système d'authentification, nous avons pris la décision d'adopter Keycloak, une plateforme spécialisée dédiée à cet effet. En effet, ce serveur exploite le protocole OpenID Connect (OIDC), lequel garantit un processus d'authentification sécurisé et robuste.
+Dans le souci de renforcer la sécurité de notre système d'authentification, notre choix s'est porté sur Keycloak, une plateforme spécialisée dédiée à cette fin. Keycloak exploite le protocole OpenID Connect (OIDC), qui assure un processus d'authentification à la fois sûr et robuste.
 
-OpenID Connect (OIDC) constitue un protocole d'authentification construit sur la base d'OAuth 2.0, spécialement conçu pour sécuriser les échanges entre applications et services en ligne. Ce protocole permet à un utilisateur de s'authentifier au sein d'une application en utilisant son identité provenant d'un fournisseur d'identité tiers, tel que Keycloak. L'usage de tokens d'authentification renforce la couche de sécurité, améliorant ainsi la fiabilité et la performance du processus.
+OpenID Connect (OIDC) repose sur OAuth 2.0 et se positionne comme un protocole d'authentification conçu spécifiquement pour sécuriser les échanges entre applications et services en ligne. Il permet à un utilisateur de s'authentifier au sein d'une application en utilisant son identité issue d'un fournisseur d'identité tiers, comme Keycloak. L'utilisation de jetons d'authentification renforce le niveau de sécurité, contribuant ainsi à la fiabilité et à l'efficacité du processus.
 
-La gestion des tokens d'authentification au sein de Keycloak se déroule de la manière suivante. Keycloak commence par généré un token d'authentification lorsque qu'un utilisateur se connecte. Une fois que le token est généré et récupérer par l'utilisateur, celui-ci est renvoyé à chaque fois lors d'une requête vers l'application API. Avant que la requête ne soit éxécuté, Keycloak vérifie si l'utilisateur est bien authentifié et s'il a les droits pour faire la requête, et si c'est le cas la requête est éxécutée. Un autre avantage des tokens générés par  Keycloak est l'expiration des tokens, qui peret de ne pas avoir un token stocké trop longtemps sur son ordinateur sans que celui-ci ne soit utilisé. Enfin, Keycloak utilise le concept de Single Sign-On, ce qui signifie qu'une fois qu'un utilisateur s'est authentifié auprès d'une application, aucune nouvelle connexion ne sera requise lorsqu'il accède à d'autres applications sécurisées par Keycloak au sein de la même session.
+La gestion des jetons d'authentification au sein de Keycloak s'articule comme suit : lorsqu'un utilisateur se connecte, Keycloak génère un jeton d'authentification. L'utilisateur reçoit ce jeton qui est ensuite transmis à chaque requête vers l'application API. Avant l'exécution de la requête, Keycloak vérifie l'authentification de l'utilisateur ainsi que ses droits pour effectuer la demande. Si les conditions sont satisfaites, la requête est exécutée. Une caractéristique avantageuse des jetons générés par Keycloak est leur expiration, prévenant ainsi la rétention d'un jeton inutilisé sur l'appareil de l'utilisateur pendant une période prolongée. Par ailleurs, Keycloak adopte le concept de Single Sign-On (SSO), ce qui signifie qu'une fois qu'un utilisateur s'est authentifié auprès d'une application, aucune nouvelle connexion n'est requise lorsqu'il accède à d'autres applications sécurisées par Keycloak au sein de la même session.
 
-En synthèse, Keycloak exploite le protocole OIDC pour gérer les tokens d'authentification, renforçant ainsi la sécurité et la convivialité de l'authentification pour les applications et les utilisateurs. Cette approche permet d'établir un environnement d'authentification centralisé et sécurisé, couvrant l'ensemble des applications développés à la Corpauration.
+En somme, l'utilisation du protocole OIDC via Keycloak pour la gestion des jetons d'authentification renforce la sécurité et la convivialité de l'authentification pour les applications et les utilisateurs. Cette approche permet d'établir un environnement centralisé et sécurisé pour l'authentification, englobant l'ensemble des applications développées au sein de la Corpauration.
 
 \begin{figure}
 	\centering
@@ -59,32 +64,39 @@ En synthèse, Keycloak exploite le protocole OIDC pour gérer les tokens d'authe
 \end{figure}
 
 \paragraph{Abonnements aux associations}
+~~\\
 
-Comme chaque association est différentes, nous nous sommes dit que chaque étudiants auront des préférences pour certaines associations ou d'autres. Un système d'abonnement sera alors créé, ce qui permettra aux étudiants d'avoir une meilleure expérience utilisateur et avoir plus facilement accès aux événements qui pourraient les intéréssé.
+Étant donné que chaque association possède ses propres particularités, il est prévu de mettre en place un système d'abonnement personnalisé. Ce système permettra aux étudiants de sélectionner les associations qui les intéressent particulièrement. En conséquence, les utilisateurs disposeront d'une expérience utilisateur améliorée, en accédant plus aisément aux événements susceptibles de les intéresser.
 
 \paragraph{Participation aux événements}
+~~\\
 
-Le fait de pouvoir participer à des événements à partir de l'application à deux intérêts : un pour les étudiants et un pour les associations.
+La possibilité de participer aux événements via l'application présente deux avantages majeurs, à la fois pour les étudiants et pour les associations.
 
-Nous avons remarquer que lorsqu'il faut cliquer sur un lien pour remplir un formulaire d'inscription sur Google Form par exemple, les étudiants ne le remplisse pas toujours et moins d'étudiants viennent à nos événements. Pour contrer ce problème, simplifier l'inscription en centralisant tout sur une application et pouvoir remplir un formulaire d'inscription avec les informations qui est déjà dans la base de données sera plus simple. Les associations auront donc plus d'étudiants inscrits et un onglet pour voir tout les inscrits, et pour les étudiants ils pourront avoir accès directement aux événements auxquels ils se sont inscrit et définir un rappel pour ne pas l'oublier.
+Nous avons constaté qu'il existe un certain désintérêt lorsque les étudiants doivent cliquer sur un lien externe, comme un formulaire Google Form, pour s'inscrire à un événement. Ce processus engendre souvent une baisse du taux de participation. Afin de pallier cette problématique, nous avons opté pour une simplification du processus d'inscription en centralisant toutes les étapes au sein de l'application. De cette manière, il devient plus aisé pour les étudiants de s'inscrire en utilisant les informations déjà enregistrées dans la base de données. Les associations bénéficieront d'une augmentation du nombre d'inscrits et disposeront d'un onglet dédié pour consulter la liste complète des participants. Du côté des étudiants, ils auront un accès direct aux événements auxquels ils se sont inscrits, ainsi que la possibilité de définir des rappels pour ne manquer aucun événement.
+
+Cette approche permet donc de simplifier le processus d'inscription, d'augmenter la participation des étudiants aux événements et d'optimiser la gestion des inscriptions pour les associations.
+
 
 \paragraph{Création d'événements}
+~~\\
 
-Créer des événements est la fonctionalité majeure de l'application. Le but est de pouvoir créer des événements le plus personalisable possible, tel que la possibilité de renseigner certains champs ou non, la possibilité de créer des événements périodiques et de tout pouvoir modifier comme on le souhaite.
+La création d'événements constitue la fonctionnalité centrale de l'application. L'objectif est de fournir une personnalisation maximale lors de la création d'événements. Cela inclut la flexibilité de renseigner certains champs selon les besoins, la faculté de créer des événements récurrents et la possibilité de procéder à des modifications en toute liberté.
 
 \paragraph{L'application web}
+~~\\
 
-Pour réaliser tout ces fonctionalités, il est plus simple d'utiliser une interface graphique. Nous avons donc décider de créer une application web afin de pouvoir bénéficier de toutes les fonctionalités le plus facilement possible.
+Pour mettre en œuvre toutes ces fonctionnalités de manière conviviale, l'utilisation d'une interface graphique s'impose. Ainsi, nous avons pris la décision de développer une application web pour permettre un accès aisé à l'ensemble des fonctionnalités.
 
-Nous avons donc décider d'utiliser le célèbre framework Javascript Vue et la librairie de composants open-source Vuetify.
+Pour cela, nous avons opté pour l'utilisation du célèbre framework JavaScript Vue, conjugué à la bibliothèque open-source de composants Vuetify.
 
-Vue est un framework JavaScript progressif et performant destiné à la création d'interfaces utilisateur interactives et dynamiques. Il facilite le développement en fournissant une structure organisée pour construire des applications web à travers la composition de composants réutilisables. Vue met l'accent sur la réactivité des données, ce qui signifie que les changements dans l'état de l'application sont automatiquement reflétés dans l'interface utilisateur sans nécessiter de manipulation directe du DOM.
+Vue est un framework JavaScript progressif et performant destiné à la création d'interfaces utilisateur interactives et dynamiques. Il simplifie le processus de développement en offrant une structure organisée pour la construction d'applications web grâce à la composition de composants réutilisables. Vue met l'accent sur la réactivité des données, permettant ainsi les changements dans l'état de l'application à se refléter automatiquement dans l'interface utilisateur, sans nécessiter de manipulations directes du DOM.
 
-Vuetify, quant à lui, est une bibliothèque de composants visuels pour Vue.js, conçue pour simplifier la création d'interfaces utilisateur esthétiques et réactives. Vuetify fournit un ensemble complet de composants pré-conçus, tels que des boutons, des barres de navigation, des cartes, et bien plus encore. Ces composants peuvent être facilement intégrés dans des projets Vue pour accélérer le processus de développement et garantir une cohérence visuelle dans toute l'application. En utilisant Vuetify, nous pouvons rapidement créer des interfaces modernes et attractives sans avoir à concevoir chaque élément visuel à partir de zéro.
+De son côté, Vuetify est une bibliothèque de composants visuels conçue spécifiquement pour Vue.js. Elle vise à simplifier la création d'interfaces utilisateur esthétiques et réactives. Vuetify met à disposition une gamme complète de composants préconçus, tels que des boutons, des barres de navigation, des cartes, et bien plus encore. Ces composants peuvent être intégrés en toute simplicité dans des projets Vue, accélérant ainsi le processus de développement tout en assurant une cohérence visuelle à travers l'application. Grâce à Vuetify, il devient possible de concevoir rapidement des interfaces modernes et attrayantes sans nécessiter la création de chaque élément visuel à partir de zéro.
 
-L'application web ne va pas dialoguer directement avec la base de données, mais plutôt avec une API qui contiendra tout le dialogue avec la base de données.
+L'application web ne communiquera pas directement avec la base de données, mais plutôt avec une API dédiée qui assurera l'ensemble des échanges avec la base de données.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
@@ -102,8 +114,13 @@ L'application web ne va pas dialoguer directement avec la base de données, mais
 \end{figure}
 
 \paragraph{L'API}
+~~\\
 
-\begin{figure}
+L'API (Interface de Programmation d'Application) agit comme un pont de connexion entre deux logiciels distincts. Dans le cadre de notre projet, l'API jouera le rôle d'intermédiaire, connectant l'application web (interface utilisateur) à la base de données. Bien qu'il soit possible de relier directement l'application web à la base de données, cette approche complexifie le développement de l'interface, entraînant une application moins maintenable et moins sécurisée.
+
+Une autre motivation pour l'utilisation d'une API réside dans sa capacité à être partagée entre plusieurs applications web. Nous envisageons d'utiliser cette même API à l'avenir pour synchroniser les événements auxquels les étudiants participent avec leur emploi du temps grâce à l'application Cyrel. Cette dernière, également développée par la Corpauration, a pour objectif de fournir un emploi du temps moderne pour faciliter le suivi des cours.
+
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
