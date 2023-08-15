@@ -1,1 +1,83 @@
 \subsection{Analyse}
+
+Dans cette section, nous explorerons en détail le développement de l'application web et de l'API, ainsi que les difficultés rencontrées tout au long de cette période de stage.
+
+\subsubsection{La communication}
+
+La communication joue un rôle crucial dans le développement de tout projet, mais elle peut présenter des défis particuliers, comme nous l'avons constaté dans le cadre de ce projet.
+
+\medskip
+
+Mon stage s'est déroulé au sein d'une association étudiante. Les membres de cette association n'étaient pas disponibles en permanence, car ils avaient leurs propres responsabilités, stages et engagements. Cette contrainte a parfois limité les créneaux pour les échanges en temps réel.
+
+Pour résoudre ce problème, nous avons mis en place deux solutions. Tout d'abord, nous avons créé un salon sur Discord, une plateforme de messagerie, regroupant le second stagiaire, mon maître de stage, les membres du bureau de l'association et moi-même. Cette solution nous a permis de discuter des différents aspects du stage, de partager nos problématiques et d'organiser des réunions pour faire le point sur l'avancement des projets. Ensuite, nous avons tiré parti des fonctionnalités d'issues et de versioning offertes par Git et GitHub. Le versioning assure un contrôle de l'évolution du logiciel en créant des sauvegardes à chaque étape du développement. Le système d'issues permet de noter des idées ou des problèmes liés au logiciel. Cela permet à tous les participants du projet de suivre les nouvelles idées et les problèmes, de s'attribuer les tâches et de collaborer efficacement, même sans communication en temps réel.
+
+\medskip
+
+La distance géographique représente un autre obstacle à la communication. Ne pas se croiser physiquement dans un bureau et ne pas pouvoir obtenir une réponse immédiate en cas de problème peuvent poser des défis. Toutefois, cette situation présente des avantages : travailler sans interruption, gérer son propre emploi du temps de manière flexible et développer des compétences d'auto-apprentissage.
+
+\medskip
+
+Nous avons constaté que bien que la communication puisse être plus complexe dans un environnement associatif en télétravail, les technologies modernes et les méthodes de collaboration adaptées peuvent surmonter ces défis et exploiter les avantages offerts par le travail à distance.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.40\textwidth]{assets/discord.jpg}
+		\subcaption{Discord}
+		\label{fig:discord}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.40\textwidth]{assets/github.png}
+		\subcaption{GitHub}
+		\label{fig:github}
+	\end{subfigure}
+	\caption{Technologies utilisées pour la communication et le versioning}
+\end{figure}
+
+
+\subsubsection{L'apprentissage de nouvelles technologies}
+
+Ce projet m'a confronté à l'apprentissage de sept nouvelles technologies distinctes, dont aucune ne m'était familière. Cette opportunité d'apprentissage m'a permis de développer de nouvelles compétences tout au long du processus, bien que j'aie commencé à me familiariser avec certaines de ces technologies avant le début du stage.
+
+L'apprentissage de la majorité de ces technologies s'est avéré être un processus relativement fluide. Certaines présentaient des similarités avec des technologies que j'avais déjà utilisées (comme Vue et React qui reposent sur un système de composants, ou Kotlin qui est une amélioration de Java). De plus, certaines de ces technologies étaient bien documentées.
+
+Ma démarche pour assimiler ces nouvelles technologies a consisté en plusieurs étapes. J'ai commencé par visionner des vidéos de présentation des concepts fondamentaux. Ensuite, j'ai entrepris de créer une petite application de liste de tâches (To-Do List) en suivant des tutoriels. Cette approche m'a permis de prendre en main les technologies en pratique tout en bénéficiant d'une orientation structurée. Enfin, j'ai approfondi mes connaissances en consultant les documentations spécifiques à chaque technologie.
+
+Cette démarche d'apprentissage m'a permis d'acquérir rapidement les compétences nécessaires pour contribuer de manière efficace au projet et pour surmonter les défis liés à l'utilisation de nouvelles technologies.
+
+\subsubsection{Le manque de documentation}
+
+Un défi majeur que j'ai rencontré au cours du projet était le manque substantiel de documentation et de tutoriels, en particulier pour Quarkus et Hibernate. En effet, Quarkus est un framework relativement récent développé par RedHat. Bien qu'il ait gagné en popularité auprès de nombreux développeurs, son utilisation reste moins répandue par rapport à d'autres langages et frameworks. Par conséquent, contrairement à d'autres environnements où l'on peut généralement trouver des solutions à divers problèmes, ce n'était pas toujours le cas avec Quarkus. Un défi similaire s'est présenté avec Hibernate, où j'ai été confronté à une erreur qui avait été découverte un mois auparavant mais qui n'avait pas encore été corrigée par les développeurs.
+
+Pour surmonter ce défi, j'ai souvent dû adopter une approche de résolution de problèmes différente. Cela impliquait de rechercher des situations similaires et d'adapter les solutions existantes à mes besoins, ou d'examiner des dépôts open-source sur des plateformes comme GitHub pour comprendre comment d'autres développeurs avaient abordé des problèmes similaires.
+
+Cet aspect du projet a exigé de la créativité, de la persévérance et une volonté de penser de manière novatrice pour contourner les obstacles liés au manque de documentation. Malgré les défis, cette expérience m'a permis d'améliorer mes compétences en résolution de problèmes et de développer une meilleure compréhension des technologies en question.
+
+\subsubsection{L'authentification}
+
+La mise en place d'un système d'authentification sécurisé représente un élément essentiel au sein d'une application web. Cependant, c'est souvent l'un des aspects les plus complexes à implémenter, car il implique de nombreuses contraintes en matière de sécurité. Comment garantir que seuls les utilisateurs autorisés peuvent accéder à certaines données ? Comment prévenir les tentatives d'usurpation d'identité ?
+
+C'est pourquoi nous avons opté pour l'utilisation d'un serveur d'authentification dédié qui se chargera de gérer ces aspects pour nous. Toutefois, cette approche a initialement posé des défis pour moi, car je ne comprenais pas complètement le fonctionnement de ce serveur. Pour résoudre cette problématique, j'ai entrepris de rechercher un dépôt open-source sur GitHub où l'extension Keycloak était utilisée. En analysant le code de ce dépôt, en le croisant avec les informations fournies dans la documentation, j'ai réussi à comprendre et à mettre en place le serveur d'authentification avec succès.
+
+Cette expérience m'a non seulement permis de surmonter les difficultés liées à la mise en place de l'authentification, mais elle m'a également offert une opportunité d'apprentissage approfondi et de développement de compétences en utilisant des ressources existantes et en les adaptant à mes besoins spécifiques.
+
+\subsubsection{La réactivité de l'API}
+
+L'aspect le plus exigeant de mon stage a été la mise en place de la réactivité au niveau de l'API. Développer une application réactive signifie créer une application capable de traiter simultanément plusieurs requêtes de manière asynchrone. Cette approche permet de réduire le temps d'attente moyen pour chaque utilisateur, évitant ainsi qu'une requête doive attendre la fin de toutes les autres pour être traitée. En d'autres termes, cela autorise un grand nombre d'utilisateurs à interagir avec l'application simultanément sans subir de ralentissements.
+
+Cependant, cette réalisation s'est avérée particulièrement complexe. La création d'une application réactive exige une manière de penser et de programmer inhabituelle, car les étapes de traitement ne se déroulent pas nécessairement dans un ordre linéaire. Il est possible qu'une fonction s'exécute neuf fois sur dix, mais échoue lors de la dixième parce qu'une tâche nécessaire à une autre n'a pas encore été achevée.
+
+Ce sont précisément ces problèmes qui ont demandé le plus de temps pour être résolus. Dans cette situation, seule la patience et l'expérience du vice-président m'ont permis de surmonter ces difficultés. Cette expérience m'a enseigné l'importance cruciale de la réactivité dans le développement d'applications modernes et m'a offert une occasion d'apprendre grâce à des conseils avisés et à la résolution de problèmes complexes en collaboration.
+
+\subsubsection{Le développement de micro-fonctionnalités}
+
+La méthodologie de développement basée sur la création de micro-fonctionnalités a été une approche qui m'a été très bénéfique, m'offrant non seulement de la flexibilité, mais également un gain de temps appréciable.
+
+L'idée centrale de cette approche consiste à développer l'application en construisant des composants de petite taille mais fonctionnels. À partir d'un composant de base, nous greffons progressivement de nouvelles fonctionnalités, créant ainsi une chaîne d'ajouts successifs. Cette méthode présente plusieurs avantages : elle favorise la flexibilité en permettant des ajustements constants, elle offre une visibilité claire sur l'état d'avancement du projet et elle garantit la disponibilité d'une application fonctionnelle à tout moment.
+
+En outre, cette approche nous a permis de mettre l'application en production dès que possible. Nous visons en effet à rendre l'application accessible dès le début de la rentrée scolaire. Cependant, compte tenu du nombre étendu de fonctionnalités que nous souhaitions inclure, achever une application totalement aboutie dès la rentrée aurait été irréaliste. La méthodologie de micro-fonctionnalités nous a offert la possibilité de lancer une application entièrement fonctionnelle dès le début, tout en ayant la flexibilité d'ajouter de nouvelles fonctionnalités par la suite, sans mettre en péril le fonctionnement des anciennes. Ainsi, l'application peut s'améliorer progressivement au fil du temps grâce à l'ajout de nouvelles fonctionnalités, sans risquer de compromettre la stabilité existante lors de chaque modification.
+
+En résumé, le développement en micro-fonctionnalités a été une approche clé dans la réussite du projet, contribuant à sa souplesse, à son efficacité et à sa capacité à évoluer de manière progressive tout en garantissant la disponibilité d'une application fonctionnelle dès le lancement.

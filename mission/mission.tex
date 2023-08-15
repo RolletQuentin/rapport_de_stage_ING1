@@ -40,7 +40,7 @@ Posséder un compte utilisateur constitue un élément clé dans l'expérience d
 
 Dans le souci de renforcer la sécurité de notre système d'authentification, notre choix s'est porté sur Keycloak, une plateforme spécialisée dédiée à cette fin. Keycloak exploite le protocole OpenID Connect (OIDC), qui assure un processus d'authentification à la fois sûr et robuste.
 
-OpenID Connect (OIDC) repose sur OAuth 2.0 et se positionne comme un protocole d'authentification conçu spécifiquement pour sécuriser les échanges entre applications et services en ligne. Il permet à un utilisateur de s'authentifier au sein d'une application en utilisant son identité issue d'un fournisseur d'identité tiers, comme Keycloak. L'utilisation de jetons d'authentification renforce le niveau de sécurité, contribuant ainsi à la fiabilité et à l'efficacité du processus.
+OpenID Connect repose sur OAuth 2.0 et se positionne comme un protocole d'authentification conçu spécifiquement pour sécuriser les échanges entre applications et services en ligne. Il permet à un utilisateur de s'authentifier au sein d'une application en utilisant son identité issue d'un fournisseur d'identité tiers, comme Keycloak. L'utilisation de jetons d'authentification renforce le niveau de sécurité, contribuant ainsi à la fiabilité et à l'efficacité du processus.
 
 La gestion des jetons d'authentification au sein de Keycloak s'articule comme suit : lorsqu'un utilisateur se connecte, Keycloak génère un jeton d'authentification. L'utilisateur reçoit ce jeton qui est ensuite transmis à chaque requête vers l'application API. Avant l'exécution de la requête, Keycloak vérifie l'authentification de l'utilisateur ainsi que ses droits pour effectuer la demande. Si les conditions sont satisfaites, la requête est exécutée. Une caractéristique avantageuse des jetons générés par Keycloak est leur expiration, prévenant ainsi la rétention d'un jeton inutilisé sur l'appareil de l'utilisateur pendant une période prolongée. Par ailleurs, Keycloak adopte le concept de Single Sign-On (SSO), ce qui signifie qu'une fois qu'un utilisateur s'est authentifié auprès d'une application, aucune nouvelle connexion n'est requise lorsqu'il accède à d'autres applications sécurisées par Keycloak au sein de la même session.
 
@@ -132,7 +132,7 @@ Une autre motivation pour l'utilisation d'une API réside dans sa capacité à �
 		\centering
 		\includegraphics[width=0.40\textwidth]{assets/hibernate.png}
 		\subcaption{Hibernate}
-		\label{fig:openid}
+		\label{fig:hibernate}
 	\end{subfigure}
 	\caption{Technologies utilisées pour l'API}
 \end{figure}
