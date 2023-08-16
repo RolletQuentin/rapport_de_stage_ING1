@@ -21,9 +21,10 @@
 \RequirePackage[hidelinks]{hyperref}%Paquet pour insérer légendes dans des sous-figures comme Figure 1a, 1b
 \RequirePackage[left=2.5cm,right=2.5cm,top=4cm,bottom=4cm]{geometry} %Configuration de la page
 \RequirePackage{tikz}
+\RequirePackage{pdfpages}
 
 
-\chead{Stage ING1} %Affichage du logo entreprise au top center de la page
+\chead{} %Affichage du logo entreprise au top center de la page
 \lhead{\includegraphics[height=1cm]{"./assets/cytech.png"}}
 \rhead{\includegraphics[height=1cm]{"./assets/corpauration.png"}}
 \rfoot{2023}
@@ -81,11 +82,8 @@
 
 \include{"./conclusion/main.tex"}
 
-% Annexes
-% Il s'agit des documents qui illustrent votre développement et appuient votre argumentation (Bibliographie si nécessaire).
+\include{"./annexes/main.tex"}
 
 
 
 \end{document}
-
-
